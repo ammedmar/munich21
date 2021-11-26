@@ -1,0 +1,111 @@
+%!TEX root = ../munich21.tex
+
+\begin{frame}[fragile]{Cup product}
+	\pause Alexander and Whitney defined the cup product by dualizing a chain approximation to the diagonal:
+	\[
+	\begin{split}
+	\gchains(\gsimplex^n) &\to
+	\gchains(\gsimplex^n) \otimes \gchains(\gsimplex^n) \\
+	[v_0, \dots, v_m] &\mapsto
+	\textstyle\sum_{i=1}^m \, [v_i, \dots, v_m] \otimes [v_i, \dots, v_m].
+	\end{split}
+	\]
+	\pause Similarly, Cartan and Serre constructed: $\gchains(\gcube^n) \to \gchains(\gcube^n) \otimes \gchains(\gcube^n)$.
+
+	\bigskip \pause
+	As mentioned before, as graded rings,
+	\[
+	H^\bullet(\mathbb{C} P^2) \not\cong H^\bullet(S^2 \vee S^4).
+	\]
+
+	\vskip -8pt \pause But,
+	\[
+	H^\bullet(\Sigma(\mathbb{C} P^2)) \cong H^\bullet(\Sigma(S^2 \vee S^4)),
+	\]
+	where $\Sigma$ denotes suspension, for example $\Sigma(S^1)$ is
+	\begin{center}
+		\includegraphics[scale=.2]{aux/suspension.pdf}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Steenrod squares}
+	\pause These chain approximations, unlike the diagonal of spaces, are \textcolor{pblue}{not} invariant under transposition: $x \otimes y \stackrel{T}{\mapsto} y \otimes x$.
+	\begin{center}
+		\begin{tikzpicture}
+		\draw[color=pblue, thick] (0,0)--(1,1);
+		\draw[->] (1.25, .5) -- (1.75, .5);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+		\node at (-0.1, 1){};
+		\draw[color=pblue, thick] (0,0)--(1,0)--(1,1);
+		\draw (1,1)--(0,1)--(0,0);
+		\end{tikzpicture}
+	\end{center}
+
+	\medskip \pause To correct homotopically the breaking of this symmetry, Steenrod introduced explicit maps
+	\[
+	\Delta_i \colon \gchains(\gsimplex^n) \to \gchains(\gsimplex^n)^{\otimes 2},
+	\qquad
+	\partial \Delta_{i} = \big(1 \pm T \big) \Delta_{i-1}
+	\]
+	inducing further structure on mod 2 cohomology:
+	\[
+	\begin{split}
+	Sq^k \colon H^\bullet(X; \Ftwo) &\to H^\bullet(X; \Ftwo) \\
+	[\alpha] &\mapsto [(\alpha \otimes \alpha) \Delta_{k-|\alpha|}(-)]
+	\end{split}
+	\]
+	\vskip -10pt \pause \textcolor{pblue}{Distinguishes}
+	\[
+	H^\bullet(\Sigma(\mathbb{C} P^2)) \not\cong H^\bullet(\Sigma(S^2 \vee S^4)).
+	\]
+\end{frame}
+
+\begin{frame}[fragile]{A (new) description of Steenrod's construction}
+	\pause \vskip -5pt \textcolor{pblue}{Notation:} \vspace*{-5pt}
+	\[
+	d_u[v_0, \dots, v_m] = [v_0, \dots, \widehat v_u, \dots, v_m]
+	\]
+	\pause \vspace*{-15pt}
+	\[
+	\rP_q(n) = \big\{ U \subseteq \{0,\dots,n\} : \bars{U} = q \big\}
+	\]
+	\pause \vspace*{-15pt}
+	\[
+	\forall \, U = \{u_1 < \dots < u_q\} \in \rP_q(n)
+	\]
+	\pause \vspace*{-15pt}
+	\[
+	d_U = d_{u_1} \dotsm \, d_{u_q}
+	\]
+	\pause \vspace*{-15pt}
+	\[
+	U^\varepsilon = \big\{ u_i \in U \mid u_i + i \equiv \varepsilon \text{ mod } 2 \big\}
+	\]
+	\pause \vskip -10pt
+	\begin{definition}[Med.]
+		For a basis element $x \in \gchains_m(\gsimplex^n)$
+		\vspace*{-5pt}
+		\[
+		\Delta_i(x) \ = \!\!\! \sum_{U \in \rP_{m-i}(n)} \!\! d_{U^0}(x) \otimes d_{U^1}(x)
+		\]
+		\vspace*{-10pt}
+	\end{definition}
+	\pause \textcolor{pblue}{Example:} \vspace*{-5pt}
+	\begin{align*}
+	\Delta_0 [0,1,2] &=
+	\Big( d_{12} \otimes \id + d_2 \otimes d_0 + \id \otimes d_{01} \Big) [0,1,2]^{\otimes 2} \\ &=
+	[0] \otimes [0,1,2] + [0,1] \otimes [1,2] + [0,1,2] \otimes [2].
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Fast computation of Steenrod squares}
+	\pause
+	Comparing with SAGE: (algorithm based on EZ-AW contraction)
+
+	\smallskip \pause
+	\textcolor{pblue}{$Sq^1$} on \textcolor{pblue}{$\Sigma^i\R P^2$} ($i^\th$ suspension of the real projective plane)
+
+	\medskip
+	\includegraphics[width=\textwidth]{aux/comp_sus_rp2.pdf}
+\end{frame}

@@ -1,0 +1,34 @@
+%!TEX root = ../munich21.tex
+
+\begin{frame}[t]{Beyond the even prime}
+	\pause
+
+	Extending the diagonal to a full \textcolor{pblue}{$E_\infty$-coalgebra} structure on chains.
+
+	\smallskip\pause
+
+	These provide an algebraic model for the homotopy theory of spaces.\\ e.g. over $\mathbb Q$ (Quillen--Sullivan) over $\overline{\mathbb F}_p$ (Mandell).
+
+	\smallskip\pause
+
+	\begin{theorem}[Med.]
+		The collection of maps $\gchains(\gsimplex^n) \to \gchains(\gsimplex^n)^{\otimes r}$ obtained from compositions of
+		\begin{align*}
+		\Delta &\colon \gchains(\gsimplex^n) \to \gchains(\gsimplex^n)^{\otimes 2}
+		\qquad \text{(AW diagonal)} \\
+		\ast &\colon \gchains(\gsimplex^n)^{\otimes 2} \to \gchains(\gsimplex^n)
+		\qquad \text{(Join map)}
+		\end{align*}
+		defines an $E_\infty$-coalgebra on simplicial chains.
+	\end{theorem}
+
+	\pause \only<5>{\qquad \qquad \scalebox{0.7}{\input{aux/join}}} \pause
+
+	Used to introduce cup $(p,i)$-products effectively def. \textcolor{pblue}{Steenrod operations} on mod $p$ cohomology.
+	\pause (Implemented in \texttt{comch}.)
+
+	\smallskip\pause
+
+	\only<8>{Also, versions for: \textcolor{pblue}{cubical} (R. Kaufmann) and
+	\textcolor{pblue}{multisimplicial} chains (A. Pizzi \& P. Salvatore).}
+\end{frame}
